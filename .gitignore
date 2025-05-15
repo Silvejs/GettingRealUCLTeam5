@@ -1,0 +1,40 @@
+# Build Folders
+bin/
+obj/
+
+# User-Specific Files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Logs
+*.log
+
+# Visual Studio Code
+.vscode/
+
+# Rider IDE
+.idea/
+*.sln.iml
+
+# NuGet Packages
+*.nupkg
+*.snupkg
+
+# DotNet Tools
+.dotnet_tool/
+
+# Temporary Files
+*.tmp
+*.temp
+*.cache
+*.pdb
+*.mdb
+
+# OS-Specific Files
+.DS_Store
+Thumbs.db
+
+# Other
+*.vs/
