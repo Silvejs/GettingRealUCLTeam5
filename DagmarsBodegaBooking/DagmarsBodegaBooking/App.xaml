@@ -2,8 +2,49 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:DagmarsBodegaBooking"
+             
+            xmlns:vm="clr-namespace:DagmarsBodegaBooking.ViewModels"
+            xmlns:view="clr-namespace:DagmarsBodegaBooking.Views"
+             
+            xmlns:vmGuest="clr-namespace:DagmarsBodegaBooking.ViewModels.Guest"
+            xmlns:viewGuest="clr-namespace:DagmarsBodegaBooking.Views.Guest" 
+             
+            xmlns:vmEmployee="clr-namespace:DagmarsBodegaBooking.ViewModels.Employee"
+            xmlns:viewEmployee="clr-namespace:DagmarsBodegaBooking.Views.Employee"
              StartupUri="Views\MainWindow.xaml">
+
+
+
+
     <Application.Resources>
-         
+        
+        <DataTemplate DataType="{x:Type vm:StartUpViewModel}">
+            <view:StartUpView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type vmGuest:GuestShellViewModel}">
+            <viewGuest:GuestShellView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type vmGuest:GuestLandingPageViewModel}">
+            <viewGuest:GuestLandingPageView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type vmEmployee:EmployeeShellViewModel}">
+            <viewEmployee:EmployeeShellView />
+        </DataTemplate>
+        
+        <DataTemplate DataType="{x:Type vmEmployee:EmployeeDashboardViewModel}">
+            <viewEmployee:EmployeeDashboardView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type vmEmployee:EmployeeReservationsViewModel}">
+            <viewEmployee:EmployeeReservationsView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type vmEmployee:EmployeeViewAllTablesViewModel}">
+            <viewEmployee:EmployeeViewAllTablesView />
+        </DataTemplate>
+
     </Application.Resources>
 </Application>
