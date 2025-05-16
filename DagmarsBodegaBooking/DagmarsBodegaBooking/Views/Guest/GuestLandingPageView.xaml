@@ -7,6 +7,12 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-            
+        <TextBlock HorizontalAlignment="Left" Margin="213,96,0,0" TextWrapping="Wrap" Text="Dagmars Bodega er dit nye stamsted. Kom og hyg med en øl og en ven i hånden &lt;3" VerticalAlignment="Top" Width="187" FontWeight="Bold"/>
+        <TextBlock HorizontalAlignment="Left" Margin="213,157,0,0" TextWrapping="Wrap" Text="Vi ses på hjørnet af Dagmarsgade og Gormsgade, Nørrebro." VerticalAlignment="Top" Width="187"/>
+        <TextBlock HorizontalAlignment="Left" Margin="213,213,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="21"><Run Text="FAQ:"/><LineBreak/><Run/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="213,242,0,0" TextWrapping="Wrap" Text="Du kan godt booke bord på Dagmars. Maksimum 15 personer og senest ankomst kl. 20. Skriv en mail til os på dagmarsbodega@gmail.com" VerticalAlignment="Top" Width="171"/>
+        <TextBlock HorizontalAlignment="Left" Margin="213,328,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="171"><Run Text="Er I et større selskab på omkring 20 personer, så kan I leje vores private lokale, Store Sol. Det koster 1.500 kr for en weekendaften. Skriv til os for at booke (-;"/><LineBreak/><Run/></TextBlock>
+        <Image Source="/Images/Logo.png" HorizontalAlignment="Left" Height="273" Margin="476,81,0,0" VerticalAlignment="Top" Width="273"/>
+
     </Grid>
 </UserControl>

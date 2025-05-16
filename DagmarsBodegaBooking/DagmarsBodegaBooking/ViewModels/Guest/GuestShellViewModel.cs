@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DagmarsBodegaBooking.Core;
 using System.Windows.Input;
+using System.DirectoryServices.ActiveDirectory;
 
 namespace DagmarsBodegaBooking.ViewModels.Guest
 {
@@ -12,12 +13,13 @@ namespace DagmarsBodegaBooking.ViewModels.Guest
     {
 
 
-        public ICommand ShowLandingPageCommand { get; }
+        
         public ICommand ShowBookTableCommand { get; }
         public ICommand ShowBookPrivateRoomCommand { get; }
 
-
+        private readonly MainViewModel _main;
         private object _currentPage;
+
         public object CurrentPage
         {
             get => _currentPage;
@@ -30,9 +32,23 @@ namespace DagmarsBodegaBooking.ViewModels.Guest
 
         public GuestShellViewModel(MainViewModel main)
         {
-            ShowLandingPageCommand = new RelayCommand(_ => CurrentPage = new GuestLandingPageViewModel());
+            _main = main;
 
-            CurrentPage = new GuestLandingPageViewModel(); // default view
+            _currentPage = new GuestLandingPageViewModel();
+            ShowBookTableCommand = new RelayCommand(_ => OpenBookTablePopup());
+            ShowBookPrivateRoomCommand = new RelayCommand(_ => OpenPrivateRoomPopup());
+        }
+
+        private void OpenBookTablePopup()
+        {
+            var window = new Views.Guest.BookTableWindow();
+            window.ShowDialog();
+        }
+
+        private void OpenPrivateRoomPopup()
+        {
+            var window = new Views.Guest.BookPrivateRoomWindow();
+            window.ShowDialog();
         }
     }
 
