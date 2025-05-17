@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DagmarsBodegaBooking.Models
 {
-    pubilc class Guest
+    public class Guest
     {
         public string Name { get; set; }
         public int PhoneNumber { get; set; }
