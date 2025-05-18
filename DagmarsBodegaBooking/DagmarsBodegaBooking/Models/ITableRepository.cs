@@ -1,0 +1,16 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace DagmarsBodegaBooking.Models
+{
+    internal interface ITableRepository
+    {
+        List<Table> GetAllTables();
+        Table GetTable(string nameTable);
+        void CreateTable(Table newTable);
+        List<Table> FetchAvailableTables(DateTime date, TimeSpan Time, int numGuests, int numSeats);
+    }
+}
