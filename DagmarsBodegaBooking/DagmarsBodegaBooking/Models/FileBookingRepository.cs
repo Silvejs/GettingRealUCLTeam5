@@ -11,6 +11,43 @@ namespace DagmarsBodegaBooking.Models
         /* FileBookingRepository implementerer IBookingRepository 
          * og indeholder metoder til at tilføje, opdatere, slette og hente bookinger fra en fil.
          */
+
+        public void CreateBooking(Booking newBooking)
+        { 
+            
+        }
+
+        public List<Booking> SaveBooking()
+        {
+        
+        }
+
+        public List<Booking> GetBooking(int id)
+        { 
+        
+        }
+
+        public List<Booking> GetAllBookings()
+        { 
+        
+        }
+
+        public List<DateTime> AvailableDates()
+        { 
+        
+        }
+
+        public bool CheckBookingConditions()
+        { 
+            return true;
+        }
+
+        public bool CheckPayment()
+        { 
+            return true;
+        }
+
+
         public void AddBooking(Booking booking)
         {
             throw new NotImplementedException();
