@@ -10,7 +10,7 @@ namespace DagmarsBodegaBooking.Models
     internal class FileTableRepository : ITableRepository
     {
         private readonly string _filePath;
-        public List<Table> tableList { get; set; }
+        public List<Table> TableList { get; set; } = new List<Table>();
 
         public FileTableRepository(string filePath)
         {
@@ -35,12 +35,40 @@ namespace DagmarsBodegaBooking.Models
             }
         }
 
-        public List<Table> FetchAvailableTables(DateTime date, TimeSpan Time, int numGuests, int numSeats) //Ikke færdig endnu!!
+        public List<Table> FetchAvailableTables(DateTime date, int numGuests) //Der er fejl i denne, da der skal rettes nogle ting i bookingklassen
         {
-            return GetAllTables()
-                .Where(t => t.NumSeats >= numGuests)
+            var bookingRepository = new FileBookingRepository(_filePath);
+
+            // Henter alle bookinger for den givne dato
+            var bookingsForDate = bookingRepository.GetAllBookings()
+                .Where(b => b.Date.Date == date.Date)
                 .ToList();
 
+            // Henter alle borde
+            var allTables = GetAllTables(); 
+
+            // Finder navnene på de borde, der er booket på datoen, med null-tjek og konvertering til string
+            var bookedTableNames = bookingsForDate
+                .Where(b => b.NameTable != null)
+                .Select(b => b.NameTable.ToString()) // Konverterer til string for at undgå typefejl
+                .ToList();
+
+            // Returnerer ledige borde, der har plads til numGuests
+            return allTables
+                .Where(t => t.NameTable != null && !bookedTableNames.Contains(t.NameTable) && t.NumSeats >= numGuests)
+                .ToList();
+
+        }
+
+        public Table AssignTable(DateTime date, int numGuests)
+        {
+            var availableTables = FetchAvailableTables(date, numGuests);
+            if (availableTables.Any())
+            {
+                // Vælger det første ledige bord (eller implementer anden logik, f.eks. mindste kapacitet)
+                return availableTables.OrderBy(t => t.NumSeats).First();
+            }
+            throw new InvalidOperationException("Ingen ledige borde fundet for den valgte dato og antal gæster.");
         }
 
         public List<Table> GetAllTables()

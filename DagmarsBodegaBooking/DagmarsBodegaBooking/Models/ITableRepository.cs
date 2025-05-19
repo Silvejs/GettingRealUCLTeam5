@@ -11,6 +11,9 @@ namespace DagmarsBodegaBooking.Models
         List<Table> GetAllTables();
         Table GetTable(string nameTable);
         void CreateTable(Table newTable);
-        List<Table> FetchAvailableTables(DateTime date, TimeSpan Time, int numGuests, int numSeats);
+        List<Table> FetchAvailableTables(DateTime date, int numGuests);
+
+        Table AssignTable(DateTime date, int numGuests);
+     
     }
 }
