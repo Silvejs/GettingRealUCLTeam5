@@ -26,11 +26,20 @@ namespace DagmarsBodegaBooking.Models
 
         public void CreateBooking(Booking newBooking) // Opretter en ny booking og tilføjer den til filen.
         {
-            // Sikrer at filen eksisterer
-            if (!File.Exists(_filePath))
+            // Tjek om bordet allerede er booket på den valgte dato
+            bool isTableBooked = GetAllBookings()
+                .Any(b => b.Table == newBooking.Table && b.Date.Date == newBooking.Date.Date);
+
+            if (isTableBooked)
             {
-                File.Create(_filePath).Close();
+                throw new InvalidOperationException("Bordet er allerede booket på den valgte dato.");
             }
+
+            if (!CheckBookingConditions() || !CheckPayment())
+            {
+                throw new InvalidOperationException("Bookingbetingelserne er ikke opfyldt.");
+            }
+
             // Tilføjer den nye booking til filen
             {
                 File.AppendAllText(_filePath, newBooking.ToString() + Environment.NewLine);
