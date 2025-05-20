@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace DagmarsBodegaBooking.Models
 {
@@ -23,7 +24,7 @@ namespace DagmarsBodegaBooking.Models
             Mail = mail;
         }
 
-        public int GuestIdGen()
+        public int GuestIdGen()                 //Guest Id Generator Metode
         {
             Random idGen = new Random();            
             List<int> usedGuestIds =new List<int>();
@@ -35,7 +36,7 @@ namespace DagmarsBodegaBooking.Models
             int rangeStop = 9999;
 
 
-            if (usedGuestIds.Count >= rangeStop - rangeStart +1)
+            if (usedGuestIds.Count >= rangeStop - rangeStart + 1)
             {
                 //hvis alle nr mellem 1000 og 9999 er brugte, så vil den ny min og max blive afregnet så den nye min bliver 10 000  og den nye max max blive 99 999
                 rangeStart = rangeStop + 1;
@@ -55,9 +56,34 @@ namespace DagmarsBodegaBooking.Models
             return GuestId;
         }
 
-
-
+      
         
+        public override string ToString()           //method override ToString() - Persistens
+        {
+            return $"{GuestId}-{Name}-{PhoneNumber}-{Mail}";
+        }
+       
+        
+        
+        public static Guest FromString(string data)     //FromString metode - Persistens
+        {
+            var parts = data.Split('-');
+            if (parts.Length !=4)
+            {
+                throw new FormatException("Invalid file string format for Table.");
+            }
+
+
+            return new Guest(   
+             int.Parse(parts[0]),   // GuestID
+             parts[1],              // Name
+             int.Parse(parts[2]),   // PhoneNumber
+             parts[3]               // Email
+             );
+
+        }
+
+
 
 
 
