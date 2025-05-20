@@ -59,14 +59,14 @@ namespace DagmarsBodegaBooking.Models
         public List<Booking> GetBooking(int id)  // Henter en booking med det angivne id fra filen.
         {
             // Henter en booking med det angivne id fra filen
-            return GetAllBookings().Where(b => b.Id == id).ToList();
+            return GetAllBookings().Where(b => b.BookingId == id).ToList();
         }
 
         public void UpdateBooking(Booking booking)  // Opdaterer en booking i filen.
         {
             // Opdaterer en booking i filen
             var bookings = GetAllBookings();
-            var index = bookings.FindIndex(b => b.Id == booking.Id);
+            var index = bookings.FindIndex(b => b.BookingId == booking.BookingId);
             if (index >= 0)
             {
                 bookings[index] = booking;
@@ -78,7 +78,7 @@ namespace DagmarsBodegaBooking.Models
         {
             // Sletter en booking fra filen
             var bookings = GetAllBookings();
-            bookings.RemoveAll(b => b.Id == booking.Id);
+            bookings.RemoveAll(b => b.BookingId == booking.BookingId);
             File.WriteAllLines(_filePath, bookings.Select(b => b.ToString()));
         }
 
