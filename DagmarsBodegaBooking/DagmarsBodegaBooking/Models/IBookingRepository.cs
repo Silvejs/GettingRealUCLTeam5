@@ -15,7 +15,7 @@ namespace DagmarsBodegaBooking.Models
 
         List<Booking> GetBooking(int id);
 
-        List<DateTime> AvailableDates();
+        List<DateTime> AvailableDates(int numGeusts);
 
         bool CheckBookingConditions();
         bool CheckPayment();

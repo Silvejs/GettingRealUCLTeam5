@@ -15,6 +15,7 @@ namespace DagmarsBodegaBooking.Models
 
         private readonly string _filePath; // Stien til filen, hvor bookingerne gemmes.
 
+
         public FileBookingRepository(string filePath) // Konstruktør, der tager stien til filen som parameter.
         {
             _filePath = filePath;
@@ -28,7 +29,7 @@ namespace DagmarsBodegaBooking.Models
         {
             // Tjek om bordet allerede er booket på den valgte dato
             bool isTableBooked = GetAllBookings()
-                .Any(b => b.Table == newBooking.Table && b.Date.Date == newBooking.Date.Date);
+                .Any(b => b.NameTable == newBooking.NameTable && b.Date.Date == newBooking.Date.Date);
 
             if (isTableBooked)
             {
@@ -89,7 +90,7 @@ namespace DagmarsBodegaBooking.Models
             return bookings;
         }
        
-        public List<DateTime> AvailableDates() // Henter alle bookinger og finder de datoer, der ikke er booket.
+        public List<DateTime> AvailableDates(int numGuests) // Henter alle bookinger og finder de datoer, der ikke er booket.
         {
             // Henter alle bookinger og finder de datoer, der ikke er booket
             var bookedDates = GetAllBookings()
@@ -97,16 +98,24 @@ namespace DagmarsBodegaBooking.Models
                 .Distinct()
                 .ToList();
 
-            // Genererer en liste over alle datoer i de næste 30 dage
+            FileTableRepository tableRepository = new FileTableRepository(_filePath);
+
+            var allTables = tableRepository.GetAllTables();
+
+
+            // Genererer en liste over alle datoer i de næste 30 dage undtagen mandag og søndag
             var allDates = Enumerable.Range(0, 30)
                 .Select(offset => DateTime.Today.AddDays(offset).Date)
+                .Where(date => date.DayOfWeek != DayOfWeek.Monday && date.DayOfWeek != DayOfWeek.Sunday)
                 .ToList();
 
-            // Returnerer de datoer, der ikke er booket
-            return allDates
-                .Where(date => !bookedDates.Contains(date))
+            var availableDates = allDates
+                .Where(date => !bookedDates.Contains(date) || tableRepository.FetchAvailableTables(date, numGuests).Any())
                 .ToList();
+            return availableDates;
         }
+
+        
 
         public bool CheckBookingConditions() // Tjekker bookingbetingelserne.
         {
