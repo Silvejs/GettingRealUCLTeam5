@@ -6,13 +6,12 @@ using System.Threading.Tasks;
 
 namespace DagmarsBodegaBooking.Models
 {
-    internal interface ITableRepository
+    public interface ITableRepository
     {
         List<Table> GetAllTables();
         Table GetTable(string nameTable);
         void CreateTable(Table newTable);
         List<Table> FetchAvailableTables(DateTime date, int numGuests);
-
         Table AssignTable(DateTime date, int numGuests);
      
     }

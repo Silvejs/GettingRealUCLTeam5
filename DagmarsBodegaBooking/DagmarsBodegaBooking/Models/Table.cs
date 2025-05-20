@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DagmarsBodegaBooking.Models
 {
-    internal class Table
+    public class Table
     {
         private int _numSeats;
         private string _nameTable;
