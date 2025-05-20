@@ -43,7 +43,7 @@ namespace DagmarsBodegaBooking.Models
                 rangeStop = rangeStart * 10 - 1;
             }
 
-
+                                        //  do - while loop 
             do
             {
                 GuestId = idGen.Next(rangeStart, rangeStop+1);
