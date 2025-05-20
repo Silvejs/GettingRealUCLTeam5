@@ -13,9 +13,6 @@ namespace DagmarsBodegaBooking.Models
 
         List<Guest> GetGuestByID(int guestId);
 
-        int GuestIdGen(int guestId);
-
-
 
     }
 }
