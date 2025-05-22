@@ -33,5 +33,10 @@ namespace DagmarsBodegaBooking.Views.Guest
         {
 
         }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }

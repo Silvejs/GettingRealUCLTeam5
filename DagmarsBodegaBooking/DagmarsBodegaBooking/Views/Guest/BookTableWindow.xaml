@@ -96,7 +96,7 @@
 
             <TextBlock Margin="0 5 0 0" Text="Telefonnummer"/>
 
-            <TextBox Text="{Binding GuestPhoneNumber, Mode=TwoWay}" Padding="2"/>
+            <TextBox Text="{Binding GuestPhoneNumber, Mode=TwoWay}" Padding="2" TextChanged="TextBox_TextChanged"/>
 
 
 

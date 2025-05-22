@@ -4,3 +4,8 @@
 29648;9;23-05-2025;22-05-2025 18:00:00;test kommentar igennnn;9355;Biblioteket
 87879;8;24-05-2025;22-05-2025 17:00:00;tester hvordan den lukker;5884;Lile sol
 75636;8;24-05-2025;22-05-2025 17:00:00;okay;5004;Biblioteket
+40293;8;25-05-2025;22-05-2025 17:00:00;dette er en test;5840;Lile sol
+32896;8;25-05-2025;22-05-2025 18:00:00;test kommentar;7478;Biblioteket
+14416;8;14-06-2025;22-05-2025 18:00:00;test kommentar;5702;Lile sol
+67409;8;28-05-2025;22-05-2025 17:00:00;test kommentar;8178;Lile sol
+27842;8;29-05-2025;22-05-2025 17:00:00;test kommentar;7805;Lile sol
