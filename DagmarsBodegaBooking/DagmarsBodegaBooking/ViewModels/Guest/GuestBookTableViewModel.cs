@@ -144,7 +144,7 @@ namespace DagmarsBodegaBooking.ViewModels.Guest
                 && !string.IsNullOrWhiteSpace(GuestName)
                 && GuestPhoneNumber > 0
                 && !string.IsNullOrWhiteSpace(GuestMail)
-                && AcceptTermsIsChecked; // Hvis du har en checkbox for vilkår
+                && AcceptTermsIsChecked; 
         }
 
 

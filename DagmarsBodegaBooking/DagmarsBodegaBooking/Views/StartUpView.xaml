@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <Button Content="Guest" Command="{Binding ShowGuestCommand}" Margin="455,191,127,191"/>
-        <Button Content="Employee" Command="{Binding ShowEmployeeCommand}" Margin="127,191,455,191"/>
+        <Button Content="Guest" Command="{Binding ShowGuestCommand}" Margin="127,191,455,191"/>
+        <Button Content="Employee" Command="{Binding ShowEmployeeCommand}"  Margin="455,191,127,191"/>
     </Grid>
 </UserControl>
