@@ -22,12 +22,16 @@ namespace DagmarsBodegaBooking.Models
         public string Name { get { return _name; } set { _name = value; } }
         public int PhoneNumber { get { return _phoneNumber; } set { _phoneNumber = value; } }
         public string Mail { get { return _mail; } set { _mail = value; } }
-        public int GuestId { get { return _guestId; } set { _guestId = GuestIdGen(); } }
+        public int GuestId { get { return _guestId; } }
 
 
         public Guest(int guestId, string name, int phoneNumber, string mail)
         {
-            GuestId = guestId;
+            if (guestId == 0)
+                _guestId = GuestIdGen();
+            else
+                _guestId = guestId;
+
             Name = name;
             PhoneNumber = phoneNumber;
             Mail = mail;
@@ -80,6 +84,7 @@ namespace DagmarsBodegaBooking.Models
                 //hvis alle nr mellem 1000 og 9999 er brugte, så vil den ny min og max blive afregnet så den nye min bliver 10 000  og den nye max max blive 99 999
                 rangeStart = rangeStop + 1;
                 rangeStop = rangeStart * 10 - 1;
+                //
             }
 
             //  do - while loop 

@@ -35,7 +35,7 @@ namespace DagmarsBodegaBooking.ViewModels.Employee
 
         public EmployeeViewAllTablesViewModel()
         {
-            var filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data", "tables.txt");
+            var filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data", "Tables.txt");
             _tableRepo = new FileTableRepository(filePath);
 
             Tables = new ObservableCollection<Table>(_tableRepo.GetAllTables());

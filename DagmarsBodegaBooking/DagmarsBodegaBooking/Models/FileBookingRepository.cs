@@ -18,7 +18,17 @@ namespace DagmarsBodegaBooking.Models
 
         public FileBookingRepository(string filePath) // Konstruktør, der tager stien til filen som parameter.
         {
-            _filePath = filePath;
+            var projectRoot = Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory)?.Parent?.Parent?.Parent?.FullName;
+            _filePath = Path.Combine(projectRoot!, "Data", "Booking.txt");
+
+
+            string? directory = Path.GetDirectoryName(_filePath);
+            if (!string.IsNullOrEmpty(directory) && !Directory.Exists(directory))
+            {
+                Directory.CreateDirectory(directory);
+            }
+
+
             if (!File.Exists(_filePath))
             {
                 File.Create(_filePath).Close();

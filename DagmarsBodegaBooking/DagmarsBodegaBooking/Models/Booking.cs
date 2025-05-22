@@ -25,7 +25,7 @@ namespace DagmarsBodegaBooking.Models
         public DateTime Time { get { return _time; } set { _time = value; } }
         public string Comment { get { return _comment; } set { _comment = value; } }
         public int BookingId { get { return _bookingId; } set { _bookingId = BookingIdGen(); } }
-        public int GuestId { get { return _guestId; } set { _guestId = guest.GuestId; } }
+        public int GuestId { get; private set; }
         public string NameTable { get { return _nameTable; } set { _nameTable = value; } }
 
         public Guest guest; //initialiser et objekt som en property for at bruge GuestId fra Guest i Booking konstruktør

@@ -22,7 +22,16 @@ namespace DagmarsBodegaBooking.Views.Guest
         public BookTableWindow()
         {
             InitializeComponent();
-            DataContext = new GuestBookPrivateRoomViewModel();
+            var vm = new GuestBookTableViewModel();
+            vm.RequestClose += () => this.Close();
+            DataContext = vm;
+
+
+        }
+
+        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

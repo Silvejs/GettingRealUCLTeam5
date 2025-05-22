@@ -1,0 +1,6 @@
+10203;8;22-05-2025;22-05-2025 17:00:00;test kommentar;7853;Lile sol
+43657;8;22-05-2025;22-05-2025 17:00:00;test kommentar;8125;Biblioteket
+37593;8;23-05-2025;22-05-2025 18:00:00;test igen kommentar;7151;Lile sol
+29648;9;23-05-2025;22-05-2025 18:00:00;test kommentar igennnn;9355;Biblioteket
+87879;8;24-05-2025;22-05-2025 17:00:00;tester hvordan den lukker;5884;Lile sol
+75636;8;24-05-2025;22-05-2025 17:00:00;okay;5004;Biblioteket

@@ -4,8 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DagmarsBodegaBooking.Views.Guest"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
-        Title="BookTableWindow" Height="670" Width="400">
+        Title="BookTableWindow" Height="700" Width="400">
     <Border Padding="20">
 
         <StackPanel>
@@ -23,25 +24,7 @@
 
             <TextBlock Text="Vælg antal personer"/>
 
-            <ComboBox SelectedIndex="0" Padding="1">
-
-                <ComboBoxItem Content="8"/>
-
-                <ComboBoxItem Content="9"/>
-
-                <ComboBoxItem Content="10"/>
-
-                <ComboBoxItem Content="11"/>
-
-                <ComboBoxItem Content="12"/>
-
-                <ComboBoxItem Content="13"/>
-
-                <ComboBoxItem Content="14"/>
-
-                <ComboBoxItem Content="15"/>
-
-            </ComboBox>
+            <ComboBox ItemsSource="{Binding GuestAmountOptions}" SelectedItem="{Binding NumGuests}" Padding="2" />
 
 
 
@@ -65,9 +48,11 @@
 
                     <TextBlock Text="Vælg en dato:"/>
 
-                    
+                    <DatePicker Name="MyDatePicker" 
+                    DisplayDateStart="{x:Static sys:DateTime.Today}"
+                    SelectedDate="{Binding SelectedDate, Mode=TwoWay}" />
 
-                    <TextBlock Name="SelectedDateText" Margin="0,10,0,0"/>
+                    
 
                     <!--<TextBlock Text="Vælg dato"/>-->
 
@@ -89,19 +74,7 @@
 
                     <TextBlock Text="Vælg ankomsttidspunkt"/>
 
-                    <ComboBox SelectedIndex="0" Padding="2">
-
-                        <ComboBoxItem Content="17:00"/>
-
-                        <ComboBoxItem Content="18:00"/>
-
-                        <ComboBoxItem Content="19:00"/>
-
-                        <ComboBoxItem Content="20:00"/>
-
-                        <ComboBoxItem Content="21:00"/>
-
-                    </ComboBox>
+                    <ComboBox ItemsSource="{Binding TimeOptions}" SelectedItem="{Binding SelectedTime}" Padding="2"/>
 
                 </StackPanel>
 
@@ -115,7 +88,7 @@
 
             <TextBlock Margin="0 5 0 0" Text="Navn"/>
 
-            <TextBox Padding="2"/>
+            <TextBox Text="{Binding GuestName, Mode=TwoWay}" Padding="2"/>
 
 
 
@@ -123,7 +96,7 @@
 
             <TextBlock Margin="0 5 0 0" Text="Telefonnummer"/>
 
-            <TextBox Padding="2"/>
+            <TextBox Text="{Binding GuestPhoneNumber, Mode=TwoWay}" Padding="2"/>
 
 
 
@@ -131,15 +104,19 @@
 
             <TextBlock Margin="0 5 0 0" Text="E-mail"/>
 
-            <TextBox Padding="2"/>
+            <TextBox Text="{Binding GuestMail, Mode=TwoWay}" Padding="2"/>
 
+            <!-- Kommentar felt -->
 
+            <TextBlock Margin="0 5 0 0" Text="Kommentar"/>
+
+            <TextBox Text="{Binding Comment, Mode=TwoWay}" Padding="2"/>
 
             <!--Accept af betingelser-->
 
             <StackPanel Margin="0 10 10 0" Grid.Column= "0" >
 
-                <CheckBox Content="Jeg accepterer bookingbetingelserne"/>
+                <CheckBox Content="Jeg accepterer bookingbetingelserne" IsChecked="{Binding AcceptTermsIsChecked, Mode=TwoWay}"/>
 
             </StackPanel>
 
@@ -155,7 +132,7 @@
 
                 </Grid.ColumnDefinitions>
 
-                <Button Margin="0 25 0 0" Grid.Column="0" Content="Godkend og betal med MobilePay" Padding="4"/>
+                <Button Margin="0 25 0 0" Grid.Column="0" Content="Godkend og betal med MobilePay" Padding="4" Command="{Binding CreateBookingCommand}" />
 
             </Grid>
 
@@ -163,8 +140,8 @@
 
             <!--Bokse med gennemført booking eller afvist booking-->
 
-            <ListBox Margin="0 25 0 0"  Height="50" Background="LightGray" />
-
+            
+            <TextBlock Text="{Binding BookingMessage}" Margin="0 25 0 0"  Height="50" Background="LightGray" />
 
 
             <TextBlock Text="Ved spørgsmål kontakt Dagmars Bodega" Margin="0 60 0 0" TextAlignment="Center" FontSize="9"/>

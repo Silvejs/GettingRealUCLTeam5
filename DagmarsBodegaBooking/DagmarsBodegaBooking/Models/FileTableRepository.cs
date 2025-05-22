@@ -16,7 +16,7 @@ namespace DagmarsBodegaBooking.Models
         {
             
             var projectRoot = Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory)?.Parent?.Parent?.Parent?.FullName;
-            _filePath = Path.Combine(projectRoot!, "Data", "tables.txt");
+            _filePath = Path.Combine(projectRoot!, "Data", "Tables.txt");
 
             
             string? directory = Path.GetDirectoryName(_filePath);

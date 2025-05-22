@@ -13,12 +13,24 @@ namespace DagmarsBodegaBooking.Models
     {
         private readonly string _filePath;
         
-     
+        public void CreateGuest(Guest guest)
+        {
+            File.AppendAllText(_filePath, guest.ToString() + Environment.NewLine);
+        }
 
         public FileGuestRepository(string filePath)
         {
-            _filePath = filePath;
-            // Sikrer at filen eksisterer
+            var projectRoot = Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory)?.Parent?.Parent?.Parent?.FullName;
+            _filePath = Path.Combine(projectRoot!, "Data", "Guest.txt");
+
+            
+            string? directory = Path.GetDirectoryName(_filePath);
+            if (!string.IsNullOrEmpty(directory) && !Directory.Exists(directory))
+            {
+                Directory.CreateDirectory(directory);
+            }
+
+            
             if (!File.Exists(_filePath))
             {
                 File.Create(_filePath).Close();

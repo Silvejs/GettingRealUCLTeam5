@@ -9,6 +9,7 @@ namespace DagmarsBodegaBooking.Models
     public interface IGuestRepository
     {
 
+        void CreateGuest(Guest guest);
         List<Guest> GetAllGuests();
 
         List<Guest> GetGuestByID(int guestId);
